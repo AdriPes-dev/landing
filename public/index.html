@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cauce Solutions — Automatización y desarrollo web para pymes</title>
+<meta name="description" content="Automatizamos las tareas repetitivas de tu empresa y construimos la web y las herramientas que las conectan. Desarrollo web, automatización de procesos e IA aplicada para pymes en Valladolid.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://caucesolutions.es/">
+<meta name="theme-color" content="#0e0f11">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cauce Solutions">
+<meta property="og:title" content="Cauce Solutions — Automatización y desarrollo web para pymes">
+<meta property="og:description" content="Automatizamos las tareas repetitivas de tu empresa y construimos la web y las herramientas que las conectan.">
+<meta property="og:url" content="https://caucesolutions.es/">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cauce Solutions — Automatización y desarrollo web para pymes">
+<meta name="twitter:description" content="Automatizamos las tareas repetitivas de tu empresa y construimos la web y las herramientas que las conectan.">
+
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="mask-icon" href="favicon.svg" color="#0e0f11">
+<link rel="manifest" href="site.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0e0f11;
+  --ink-2:#17181c;
+  --ink-3:#212329;
+  --line:#2b2d34;
+  --paper:#f4f3ef;
+  --mut:#9a9ca3;
+  --ok:#2fbf71;
+  --ok-dim:rgba(47,191,113,.14);
+  --danger:#e5484d;
+  --warn:#f5b942;
+  --disp:'Archivo',sans-serif;
+  --body:'Instrument Sans',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+::selection{background:var(--ok);color:var(--ink)}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+.mono{font-family:var(--mono)}
+.ok{color:var(--ok)}
+
+/* ---------- utilidades ---------- */
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ok);display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--ok)}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  *{animation-duration:.001s !important;animation-iteration-count:1 !important;transition-duration:.001s !important}
+  html{scroll-behavior:auto}
+}
+
+/* ---------- nav ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(14,15,17,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--disp);font-weight:900;font-stretch:110%;font-size:19px;letter-spacing:-.01em;display:flex;align-items:center;gap:9px;text-decoration:none}
+.logo-mark{width:26px;height:26px;flex:none}
+.logo-mark path{stroke:var(--paper);stroke-width:2.4;fill:none;stroke-linecap:round}
+.logo-mark .pulse-dot{fill:var(--ok)}
+.logo b{font-weight:900}.logo span{font-weight:500;font-stretch:100%;color:var(--mut)}
+.nav-links{display:flex;gap:28px;align-items:center;list-style:none}
+.nav-links a{text-decoration:none;font-size:14.5px;color:var(--mut);transition:color .2s}
+.nav-links a:hover,.nav-links a:focus-visible{color:var(--paper)}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--paper);background:transparent;color:var(--paper);padding:9px 18px;font-size:14px;font-weight:600;text-decoration:none;transition:background .2s,color .2s,border-color .2s;border-radius:2px}
+.btn:hover,.btn:focus-visible{background:var(--paper);color:var(--ink)}
+.btn.solid{background:var(--paper);color:var(--ink)}
+.btn.solid:hover,.btn.solid:focus-visible{background:var(--ok);border-color:var(--ok);color:var(--ink)}
+.btn.ok-btn{border-color:var(--ok);color:var(--ok)}
+.btn.ok-btn:hover,.btn.ok-btn:focus-visible{background:var(--ok);color:var(--ink)}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.btn[disabled]:hover{background:transparent;color:var(--paper)}
+.burger{display:none;background:none;border:1px solid var(--line);color:var(--paper);padding:8px 10px;border-radius:2px;font-family:var(--mono);font-size:12px}
+
+/* ---------- hero ---------- */
+header.hero{padding:150px 0 90px;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+h1{font-family:var(--disp);font-weight:900;font-stretch:112%;font-size:clamp(38px,5.4vw,64px);line-height:1.02;letter-spacing:-.02em;text-transform:uppercase}
+h1 .under{position:relative;white-space:nowrap}
+h1 .under::after{content:"";position:absolute;left:0;bottom:6px;height:10px;width:100%;background:var(--ok-dim);border-bottom:2px solid var(--ok);transform:scaleX(0);transform-origin:left;animation:draw 1s .5s ease forwards}
+@keyframes draw{to{transform:scaleX(1)}}
+.hero p.lead{margin:22px 0 30px;font-size:18px;color:#c9cbd1;max-width:46ch}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.hero-meta{margin-top:36px;display:flex;gap:26px;flex-wrap:wrap;font-family:var(--mono);font-size:12.5px;color:var(--mut)}
+.hero-meta b{color:var(--paper);font-weight:500}
+
+/* pipeline (elemento firma) */
+.pipeline{background:var(--ink-2);border:1px solid var(--line);border-radius:6px;padding:26px 22px;position:relative}
+.pipeline .win{display:flex;gap:6px;margin-bottom:18px}
+.pipeline .win i{width:9px;height:9px;border-radius:50%;background:var(--ink-3);display:block}
+.pipe-title{font-family:var(--mono);font-size:11.5px;color:var(--mut);letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px}
+.pipe-svg{width:100%;height:auto;display:block}
+.pipe-svg .wire{stroke:var(--line);stroke-width:2;fill:none}
+.pipe-svg .wire-lit{stroke:var(--ok);stroke-width:2;fill:none;stroke-dasharray:6 10;animation:flow 1.4s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-16}}
+.pipe-svg .node{fill:var(--ink-3);stroke:var(--line);stroke-width:1.5}
+.pipe-svg text{font-family:var(--mono);font-size:10.5px;fill:#c9cbd1}
+.pipe-svg .nlabel{fill:var(--mut);font-size:9px;letter-spacing:.06em}
+.pipe-svg .dot{fill:var(--ok);animation:travel 3.2s linear infinite}
+@keyframes travel{0%{opacity:0}6%{opacity:1}94%{opacity:1}100%{opacity:0}}
+.pipe-log{margin-top:16px;border-top:1px dashed var(--line);padding-top:12px;font-family:var(--mono);font-size:12px;color:var(--mut);height:66px;overflow:hidden}
+.pipe-log div{opacity:0;animation:logline .4s ease forwards}
+@keyframes logline{to{opacity:1}}
+.pipe-log .t{color:#5d5f66;margin-right:8px}
+.pipe-log .okk{color:var(--ok)}
+
+/* ---------- secciones landing ---------- */
+section{padding:96px 0;border-top:1px solid var(--line)}
+h2{font-family:var(--disp);font-weight:900;font-stretch:110%;font-size:clamp(28px,3.6vw,42px);line-height:1.05;letter-spacing:-.015em;text-transform:uppercase;margin:14px 0 12px}
+.sec-sub{color:var(--mut);max-width:56ch;font-size:16.5px}
+
+/* servicios */
+.svc-grid{margin-top:52px;display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.svc{background:var(--ink);padding:34px 30px;position:relative;transition:background .25s}
+.svc:hover{background:var(--ink-2)}
+.svc .tag{font-family:var(--mono);font-size:11px;color:var(--mut);letter-spacing:.1em;text-transform:uppercase}
+.svc h3{font-family:var(--disp);font-weight:800;font-stretch:108%;font-size:21px;margin:12px 0 10px;letter-spacing:-.01em}
+.svc p{color:var(--mut);font-size:15px;max-width:44ch}
+.svc .price{margin-top:18px;font-family:var(--mono);font-size:13.5px;color:var(--paper)}
+.svc .price b{color:var(--ok);font-weight:500}
+.svc .st{position:absolute;top:32px;right:28px;width:8px;height:8px;border-radius:50%;background:var(--line);transition:background .25s,box-shadow .25s}
+.svc:hover .st{background:var(--ok);box-shadow:0 0 12px var(--ok)}
+
+/* proceso — el cauce */
+.proc{display:grid;grid-template-columns:44px 1fr;gap:0 26px;margin-top:56px;position:relative}
+.proc-rail{grid-column:1;grid-row:1/span 8;position:relative;width:2px;justify-self:center;background:var(--line)}
+.proc-rail .fill{position:absolute;top:0;left:0;width:100%;height:0;background:var(--ok);transition:height .2s linear}
+.step{grid-column:2;padding:26px 0 40px;position:relative}
+.step .knob{position:absolute;left:-49px;top:32px;width:14px;height:14px;border-radius:50%;background:var(--ink);border:2px solid var(--line);transition:border-color .3s,background .3s,box-shadow .3s}
+.step.lit .knob{border-color:var(--ok);background:var(--ok);box-shadow:0 0 14px rgba(47,191,113,.7)}
+.step .n{font-family:var(--mono);font-size:12px;color:var(--mut);letter-spacing:.1em}
+.step h3{font-family:var(--disp);font-weight:800;font-stretch:108%;font-size:20px;margin:6px 0}
+.step p{color:var(--mut);font-size:15px;max-width:60ch}
+.step .dur{font-family:var(--mono);font-size:12px;color:var(--ok);margin-top:8px;display:inline-block}
+
+/* nichos */
+.niche-row{margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.niche{border:1px solid var(--line);padding:26px;border-radius:4px;transition:border-color .25s,transform .25s}
+.niche:hover{border-color:var(--ok);transform:translateY(-3px)}
+.niche h3{font-family:var(--disp);font-weight:800;font-size:17px;margin-bottom:8px}
+.niche p{color:var(--mut);font-size:14px}
+.niche .ex{margin-top:14px;font-family:var(--mono);font-size:12px;color:var(--paper);border-top:1px dashed var(--line);padding-top:12px}
+.niche .ex::before{content:"→ ";color:var(--ok)}
+
+/* contacto */
+.cta-box{margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.field{margin-bottom:16px}
+.field label{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-bottom:7px}
+.field input,.field textarea,.field select{width:100%;background:var(--ink-2);border:1px solid var(--line);color:var(--paper);padding:12px 14px;font-family:var(--body);font-size:15px;border-radius:3px;transition:border-color .2s}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--ok)}
+.field-check{display:flex;align-items:flex-start;gap:10px;margin:20px 0 18px}
+.field-check input{width:auto;margin-top:3px;accent-color:var(--ok)}
+.field-check label{font-size:13px;color:var(--mut);font-family:var(--body);text-transform:none;letter-spacing:0}
+.field-check a{color:var(--paper);text-decoration:underline}
+.form-note{font-family:var(--mono);font-size:12px;color:var(--mut);margin-top:10px}
+.contact-info{font-size:15.5px;color:var(--mut)}
+.contact-info p{margin-bottom:18px}
+.contact-info .big{font-family:var(--disp);font-weight:800;font-size:22px;color:var(--paper)}
+.contact-info a.mail{color:var(--paper);text-decoration:none;border-bottom:1px solid var(--line)}
+.contact-info a.mail:hover{border-color:var(--ok);color:var(--ok)}
+
+footer{border-top:1px solid var(--line);padding:34px 0;color:var(--mut);font-size:13.5px}
+.foot-in{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+.foot-in .mono{font-size:12px}
+.foot-legal{display:flex;gap:18px;flex-wrap:wrap;list-style:none}
+.foot-legal a{text-decoration:none;color:var(--mut);font-size:13px;transition:color .2s}
+.foot-legal a:hover{color:var(--paper)}
+
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ink-2);border:1px solid var(--ok);color:var(--paper);padding:13px 22px;border-radius:4px;font-size:14.5px;z-index:99;transition:transform .35s ease;display:flex;gap:10px;align-items:center;max-width:calc(100vw - 40px)}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.toast::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 10px var(--ok);flex:none}
+
+/* ---------- aviso de cookies ---------- */
+.cookie-bar{position:fixed;left:0;right:0;bottom:0;z-index:100;background:var(--ink-2);border-top:1px solid var(--line);padding:18px 24px;display:none}
+.cookie-bar.show{display:block}
+.cookie-in{max-width:1160px;margin:0 auto;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.cookie-in p{font-size:13.5px;color:var(--mut);max-width:66ch}
+.cookie-in p a{color:var(--paper);text-decoration:underline}
+.cookie-actions{display:flex;gap:10px;flex:none}
+
+@media(max-width:960px){
+  .hero-grid{grid-template-columns:1fr}
+  .svc-grid{grid-template-columns:1fr}
+  .niche-row{grid-template-columns:1fr}
+  .cta-box{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .burger{display:block}
+  .nav-links.open{display:flex;position:absolute;top:100%;left:0;right:0;background:var(--ink-2);flex-direction:column;padding:18px 24px;border-bottom:1px solid var(--line);align-items:flex-start}
+  .cookie-in{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ TOAST ============ -->
+<div class="toast" id="toast">Hecho</div>
+
+<nav>
+  <div class="nav-in">
+    <a class="logo" href="index.html" aria-label="Cauce Solutions — inicio">
+      <svg class="logo-mark" viewBox="0 0 26 26" aria-hidden="true">
+        <path d="M3 8 C10 8 9 18 16 18 L23 18"/>
+        <path d="M3 18 C10 18 9 8 16 8 L23 8" opacity=".35"/>
+        <circle class="pulse-dot" cx="23" cy="18" r="2.6"/>
+      </svg>
+      <span><b>CAUCE</b> <span>Solutions</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#proceso">Cómo trabajamos</a></li>
+      <li><a href="#sectores">Sectores</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+      <li><a class="btn ok-btn" href="/portal/">Portal de clientes</a></li>
+    </ul>
+    <button class="burger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-expanded="false" aria-controls="navLinks">MENÚ</button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Automatización · Desarrollo · Valladolid</div>
+      <h1>Tu negocio,<br>en <span class="under">verde</span>.</h1>
+      <p class="lead">Automatizamos las tareas repetitivas de tu empresa y construimos la web y las herramientas que las conectan. Menos Excel a mano, menos correos perdidos, más tiempo para lo que factura.</p>
+      <div class="hero-ctas">
+        <a class="btn solid" href="#contacto">Pedir diagnóstico gratuito</a>
+        <a class="btn" href="#servicios">Ver servicios</a>
+      </div>
+      <div class="hero-meta">
+        <div><b>+15</b> procesos automatizados</div>
+        <div><b>n8n · Power Automate</b> · M365</div>
+        <div><b>Respuesta</b> &lt; 24 h</div>
+      </div>
+    </div>
+
+    <div class="pipeline reveal" aria-hidden="true">
+      <div class="win"><i></i><i></i><i></i></div>
+      <div class="pipe-title">flujo · alta-de-cliente.json — en producción</div>
+      <svg class="pipe-svg" viewBox="0 0 460 190">
+        <!-- cables -->
+        <path class="wire" d="M78 50 L130 50 C160 50 160 95 190 95 L200 95"/>
+        <path class="wire" d="M78 140 L130 140 C160 140 160 95 190 95 L200 95"/>
+        <path class="wire-lit" d="M78 50 L130 50 C160 50 160 95 190 95 L200 95"/>
+        <path class="wire-lit" d="M278 94 C300 90 305 50 330 50" style="animation-delay:.4s"/>
+        <!-- nodos -->
+        <g>
+          <rect class="node" x="8" y="30" width="70" height="40" rx="5"/>
+          <text x="43" y="48" text-anchor="middle">WEB</text>
+          <text class="nlabel" x="43" y="61" text-anchor="middle">formulario</text>
+        </g>
+        <g>
+          <rect class="node" x="8" y="120" width="70" height="40" rx="5"/>
+          <text x="43" y="138" text-anchor="middle">EMAIL</text>
+          <text class="nlabel" x="43" y="151" text-anchor="middle">buzón</text>
+        </g>
+        <g>
+          <rect class="node" x="200" y="75" width="78" height="40" rx="5"/>
+          <text x="239" y="93" text-anchor="middle">n8n</text>
+          <text class="nlabel" x="239" y="106" text-anchor="middle">validación</text>
+        </g>
+        <g>
+          <rect class="node" x="330" y="30" width="88" height="40" rx="5"/>
+          <text x="374" y="48" text-anchor="middle">CRM</text>
+          <text class="nlabel" x="374" y="61" text-anchor="middle">ficha creada</text>
+        </g>
+        <g>
+          <rect class="node" x="330" y="120" width="88" height="40" rx="5"/>
+          <text x="374" y="138" text-anchor="middle">AVISO</text>
+          <text class="nlabel" x="374" y="151" text-anchor="middle">al responsable</text>
+        </g>
+        <path class="wire" d="M330 50 C305 50 300 90 278 94 M330 140 C305 140 300 100 278 96"/>
+        <!-- pulso viajero -->
+        <circle class="dot" r="4">
+          <animateMotion dur="3.2s" repeatCount="indefinite" path="M78 50 L130 50 C160 50 160 95 190 95 L239 95 L278 95 C305 95 300 52 330 50"/>
+        </circle>
+      </svg>
+      <div class="pipe-log" id="pipeLog"></div>
+    </div>
+  </div>
+</header>
+
+<section id="servicios">
+  <div class="wrap">
+    <div class="eyebrow reveal">Servicios</div>
+    <h2 class="reveal">Productos con precio cerrado.<br>Sin sorpresas.</h2>
+    <p class="sec-sub reveal">Nada de presupuestos por horas que nadie entiende. Cuatro productos, un precio, un resultado.</p>
+    <div class="svc-grid">
+      <article class="svc reveal">
+        <span class="st"></span>
+        <div class="tag">01 · Web</div>
+        <h3>Web que trabaja</h3>
+        <p>Web corporativa rápida, con formularios que llegan de verdad, ficha de Google optimizada y analítica para saber qué funciona.</p>
+        <div class="price">desde <b>900 €</b> · entrega en 3 semanas</div>
+      </article>
+      <article class="svc reveal">
+        <span class="st"></span>
+        <div class="tag">02 · Automatización</div>
+        <h3>Oficina sin tareas repetitivas</h3>
+        <p>Auditamos 2-3 procesos manuales y los automatizamos con n8n o Power Automate sobre el Microsoft 365 que ya pagas.</p>
+        <div class="price">desde <b>600 €</b> por proceso</div>
+      </article>
+      <article class="svc reveal">
+        <span class="st"></span>
+        <div class="tag">03 · Inteligencia artificial</div>
+        <h3>Asistente interno con IA</h3>
+        <p>Un asistente que responde con la documentación de tu negocio: procedimientos, plantillas, normativa. Tus datos no salen de tu entorno.</p>
+        <div class="price">desde <b>1.500 €</b> · proyecto piloto</div>
+      </article>
+      <article class="svc reveal">
+        <span class="st"></span>
+        <div class="tag">04 · Continuidad</div>
+        <h3>Mantenimiento y mejora</h3>
+        <p>Soporte con respuesta en menos de 24 h, hosting gestionado y una mejora pequeña cada mes. Tu sistema nunca se queda atrás.</p>
+        <div class="price">desde <b>60 €/mes</b> · sin permanencia</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="proceso">
+  <div class="wrap">
+    <div class="eyebrow reveal">Cómo trabajamos</div>
+    <h2 class="reveal">El cauce: de la fuga<br>al flujo.</h2>
+    <p class="sec-sub reveal">Cada proyecto sigue el mismo recorrido. Cuando una fase está completa, se pone en verde. Literalmente: así lo verás en tu portal.</p>
+
+    <div class="proc" id="proc">
+      <div class="proc-rail"><div class="fill" id="railFill"></div></div>
+
+      <div class="step"><span class="knob"></span>
+        <div class="n">FASE 1</div>
+        <h3>Diagnóstico</h3>
+        <p>Una reunión de una hora. Nos cuentas cómo trabajáis y detectamos dónde se va el tiempo: datos copiados a mano, correos que se pierden, documentos que se rehacen.</p>
+        <span class="dur mono">gratuito · 1 hora</span>
+      </div>
+      <div class="step"><span class="knob"></span>
+        <div class="n">FASE 2</div>
+        <h3>Propuesta cerrada</h3>
+        <p>Recibes un documento con qué vamos a construir, cuánto cuesta y cuánto tiempo te ahorra al mes. Precio fijo. Si no compensa, te lo decimos.</p>
+        <span class="dur mono">48 horas después</span>
+      </div>
+      <div class="step"><span class="knob"></span>
+        <div class="n">FASE 3</div>
+        <h3>Construcción</h3>
+        <p>Desarrollamos en ciclos cortos y te enseñamos avances reales cada semana desde tu portal de cliente. Sin desaparecer tres meses.</p>
+        <span class="dur mono">2 – 6 semanas</span>
+      </div>
+      <div class="step"><span class="knob"></span>
+        <div class="n">FASE 4</div>
+        <h3>En verde</h3>
+        <p>Entrega, formación a tu equipo y monitorización. A partir de aquí, el mantenimiento mensual mantiene todo funcionando y mejorando.</p>
+        <span class="dur mono">soporte &lt; 24 h</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sectores">
+  <div class="wrap">
+    <div class="eyebrow reveal">Sectores</div>
+    <h2 class="reveal">Conocemos tu papeleo.</h2>
+    <p class="sec-sub reveal">Trabajamos con pocos sectores para conocerlos a fondo. Estos son los nuestros.</p>
+    <div class="niche-row">
+      <div class="niche reveal">
+        <h3>Despachos profesionales</h3>
+        <p>Procuradores, abogados, gestorías y asesorías. Notificaciones, expedientes y plazos que no admiten errores.</p>
+        <div class="ex mono">Generación automática de escritos desde formulario</div>
+      </div>
+      <div class="niche reveal">
+        <h3>Industria y agroalimentario</h3>
+        <p>Partes de producción, control de contadores, informes que hoy viven en un Excel compartido por correo.</p>
+        <div class="ex mono">Parte de planta → informe diario sin intervención</div>
+      </div>
+      <div class="niche reveal">
+        <h3>Clínicas y servicios</h3>
+        <p>Citas, recordatorios, formularios de pacientes y facturación recurrente sin perseguir a nadie por teléfono.</p>
+        <div class="ex mono">Recordatorio de cita por WhatsApp y email</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="eyebrow reveal">Contacto</div>
+    <h2 class="reveal">Empieza por el diagnóstico.</h2>
+    <div class="cta-box">
+      <form class="reveal" id="contactForm" novalidate>
+        <div class="field">
+          <label for="c-nombre">Nombre y empresa</label>
+          <input id="c-nombre" name="nombre" type="text" placeholder="María López · López Asesores" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="c-email">Email</label>
+          <input id="c-email" name="email" type="email" placeholder="maria@lopezasesores.es" required autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="c-msg">¿Qué tarea os quita más tiempo?</label>
+          <textarea id="c-msg" name="mensaje" rows="4" placeholder="Cada lunes copiamos a mano los pedidos del email a una hoja de cálculo…" required></textarea>
+        </div>
+        <div class="field-check">
+          <input type="checkbox" id="c-priv" name="privacidad" required>
+          <label for="c-priv">He leído y acepto la <a href="privacidad.html">política de privacidad</a>. Solo usaremos estos datos para responder a tu solicitud.</label>
+        </div>
+        <button class="btn solid" type="submit">Solicitar diagnóstico gratuito</button>
+        <div class="form-note">// se abrirá tu cliente de correo con el mensaje ya redactado</div>
+      </form>
+      <div class="contact-info reveal">
+        <p class="big">Respondemos en menos de 24 horas laborables.</p>
+        <p>El diagnóstico es una reunión de una hora, presencial en Valladolid o por videollamada. Sales con una lista de procesos automatizables y una estimación honesta de si compensa hacerlo.</p>
+        <p class="mono" style="font-size:13px"><a class="mail" href="mailto:hola@caucesolutions.com">hola@caucesolutions.com</a><br>Valladolid, España</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <div id="footYear">© 2026 Cauce Solutions · Valladolid</div>
+    <ul class="foot-legal">
+      <li><a href="aviso-legal.html">Aviso legal</a></li>
+      <li><a href="privacidad.html">Privacidad</a></li>
+      <li><a href="cookies.html">Cookies</a></li>
+    </ul>
+    <a class="mono" style="text-decoration:none;color:var(--mut)" href="/portal/">Portal de clientes →</a>
+  </div>
+</footer>
+
+<!-- ============ AVISO DE COOKIES ============ -->
+<div class="cookie-bar" id="cookieBar" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
+  <div class="cookie-in">
+    <p>Usamos únicamente <b>cookies técnicas</b> imprescindibles para el funcionamiento del sitio (por ejemplo, recordar que ya has visto este aviso). No usamos cookies de analítica ni de publicidad. Más información en nuestra <a href="cookies.html">política de cookies</a>.</p>
+    <div class="cookie-actions">
+      <button class="btn ok-btn" onclick="setCookieConsent()">Entendido</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============ contacto: envío por email, sin backend ============ */
+document.getElementById('contactForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const nombre=document.getElementById('c-nombre').value.trim();
+  const email=document.getElementById('c-email').value.trim();
+  const mensaje=document.getElementById('c-msg').value.trim();
+  const priv=document.getElementById('c-priv').checked;
+  if(!nombre||!email||!mensaje){toast('Rellena todos los campos');return}
+  if(!priv){toast('Debes aceptar la política de privacidad');return}
+  const subject=encodeURIComponent('Diagnóstico gratuito — '+nombre);
+  const body=encodeURIComponent(`Nombre y empresa: ${nombre}\nEmail: ${email}\n\n${mensaje}`);
+  window.location.href=`mailto:hola@caucesolutions.com?subject=${subject}&body=${body}`;
+  toast('Abriendo tu cliente de correo…');
+});
+
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('show'),2600);
+}
+
+/* ============ año dinámico en el footer ============ */
+document.getElementById('footYear').textContent='© '+new Date().getFullYear()+' Cauce Solutions · Valladolid';
+
+/* ============ aviso de cookies ============ */
+function setCookieConsent(){
+  try{localStorage.setItem('cauce-cookie-notice','seen')}catch(e){}
+  document.getElementById('cookieBar').classList.remove('show');
+}
+(function(){
+  let seen=null;
+  try{seen=localStorage.getItem('cauce-cookie-notice')}catch(e){}
+  if(!seen)document.getElementById('cookieBar').classList.add('show');
+})();
+
+/* reveal on scroll */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* cauce: raíl que se llena y knobs que se encienden */
+const rail=document.getElementById('railFill'),proc=document.getElementById('proc');
+function railTick(){
+  if(!proc)return;
+  const r=proc.getBoundingClientRect(),vh=innerHeight;
+  const p=Math.min(1,Math.max(0,(vh*0.72-r.top)/r.height));
+  rail.style.height=(p*100)+'%';
+  const railTop=proc.getBoundingClientRect().top;
+  document.querySelectorAll('#proc .step').forEach(s=>{
+    const kt=s.querySelector('.knob').getBoundingClientRect().top-railTop;
+    s.classList.toggle('lit',kt<=p*r.height);
+  });
+}
+addEventListener('scroll',railTick,{passive:true});addEventListener('resize',railTick);railTick();
+
+/* log animado del pipeline */
+const logLines=[
+  ['06:00:01','trigger: nuevo envío de formulario','',''],
+  ['06:00:01','validación de campos','OK','okk'],
+  ['06:00:02','ficha creada en CRM #4821','OK','okk'],
+  ['06:00:02','aviso enviado al responsable','OK','okk']
+];
+const logEl=document.getElementById('pipeLog');
+let li=0;
+function pushLog(){
+  if(!logEl)return;
+  if(li>=logLines.length){setTimeout(()=>{logEl.innerHTML='';li=0;pushLog()},2600);return}
+  const[t,m,st,cls]=logLines[li++];
+  const d=document.createElement('div');
+  d.innerHTML=`<span class="t">${t}</span>${m}${st?` <span class="${cls}">[${st}]</span>`:''}`;
+  logEl.appendChild(d);
+  setTimeout(pushLog,650);
+}
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches)pushLog();
+else if(logEl)logEl.innerHTML='<div style="opacity:1"><span class="t">06:00:02</span>4 pasos ejecutados <span class="okk">[OK]</span></div>';
+</script>
+</body>
+</html>

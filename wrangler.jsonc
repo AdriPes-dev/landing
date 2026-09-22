@@ -1,0 +1,8 @@
+{
+  "name": "caucesolutions",
+  "compatibility_date": "2026-09-22",
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "404-page"
+  }
+}

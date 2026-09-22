@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Página no encontrada — Cauce Solutions</title>
+<meta name="robots" content="noindex, follow">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0e0f11;
+  --ink-2:#17181c;
+  --line:#2b2d34;
+  --paper:#f4f3ef;
+  --mut:#9a9ca3;
+  --ok:#2fbf71;
+  --disp:'Archivo',sans-serif;
+  --body:'Instrument Sans',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--ink);color:var(--paper);font-family:var(--body);min-height:100vh;display:grid;place-items:center;padding:24px;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:520px;text-align:center}
+.logo{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-family:var(--disp);font-weight:900;font-stretch:110%;font-size:19px;letter-spacing:-.01em;margin-bottom:46px}
+.logo-mark{width:26px;height:26px;flex:none}
+.logo-mark path{stroke:var(--paper);stroke-width:2.4;fill:none;stroke-linecap:round}
+.logo-mark .pulse-dot{fill:var(--ok)}
+.logo b{font-weight:900}.logo span{font-weight:500;font-stretch:100%;color:var(--mut)}
+.code{font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:var(--ok);display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:14px}
+.code::before,.code::after{content:"";width:22px;height:1px;background:var(--ok)}
+h1{font-family:var(--disp);font-weight:900;font-stretch:112%;font-size:clamp(30px,5vw,42px);line-height:1.05;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:18px}
+p{color:var(--mut);font-size:15.5px;margin-bottom:10px}
+.note{margin:28px 0 34px;border:1px dashed var(--line);border-radius:4px;padding:14px 16px;font-family:var(--mono);font-size:12.5px;color:var(--mut);text-align:left}
+.actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--paper);background:transparent;color:var(--paper);padding:10px 20px;font-size:14px;font-weight:600;text-decoration:none;transition:background .2s,color .2s;border-radius:2px}
+.btn:hover{background:var(--paper);color:var(--ink)}
+.btn.solid{background:var(--paper);color:var(--ink)}
+.btn.solid:hover{background:var(--ok);color:var(--ink)}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="Cauce Solutions — inicio">
+      <svg class="logo-mark" viewBox="0 0 26 26" aria-hidden="true">
+        <path d="M3 8 C10 8 9 18 16 18 L23 18"/>
+        <path d="M3 18 C10 18 9 8 16 8 L23 8" opacity=".35"/>
+        <circle class="pulse-dot" cx="23" cy="18" r="2.6"/>
+      </svg>
+      <span><b>CAUCE</b> <span>Solutions</span></span>
+    </a>
+    <div class="code">ERROR 404</div>
+    <h1>Esta página no existe.</h1>
+    <p>Si buscabas el <b>portal de clientes</b>: todavía no está desplegado públicamente. Se abrirá en un subdominio propio cuando esté disponible.</p>
+    <div class="note">// ¿eres cliente y necesitas algo ahora? escríbenos y te atendemos por email mientras tanto.</div>
+    <div class="actions">
+      <a class="btn solid" href="index.html">Volver al inicio</a>
+      <a class="btn" href="mailto:hola@caucesolutions.com">Contactar</a>
+    </div>
+  </div>
+</body>
+</html>
